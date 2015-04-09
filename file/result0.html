@@ -1,0 +1,127 @@
+1|#||4|1649|updatePanel|UP1|
+          <h4 class="title2">用户信息</h4>
+           <fieldset style="border:1px solid black; padding-left:10px;">
+           <label for="txtUserName" >预约人帐号：</label><span id="txtUserCode">11722157</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           <label for="txtName" >预约人姓名：</label><span id="txtName">王响</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           联系电话：<span id="txtPhoneNo">18817394799</span><br /><hr />
+           手机号码：<span id="txtMobileNo">18817394799</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           用户类型：<span id="txtPers_Type">研究生</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           所属部门：<span id="txtDeptName">纳米科学与技术研究中心</span>
+        </fieldset>
+            <h4 class="title2">仪器信息</h4>
+            <div style="border:1px solid black;">
+            <table class="tableclass4">
+                <tr>
+                    <td>仪器名称：<span id="txtEquipName">傅里叶红外光谱仪                        </span></td>
+                    <td>仪器型号：<span id="txtEquipModel">AVATAR370 FT-IR               </span></td>
+                </tr>
+                 <tr>
+                    <td>实&nbsp;验&nbsp;室：<span id="txtOID">基础化学实验中心</span></td>
+                    <td>所在位置：<span id="txtEquipAddress">化学楼213</span></td>
+                </tr>
+                 <tr>
+                    <td colspan="2">联&nbsp;系&nbsp;人：<span id="txtChargePerson">徐引娟(66134730)</span></td>
+                </tr>
+            </table>
+            </div>
+        
+          |475|updatePanel|upSeatList|
+                <h4 class="title2">预约时间段</h4>
+                <div>
+	<table class="GridSelf" cellspacing="0" rules="all" border="1" id="gvSeatList" style="width:60%;border-collapse:collapse;">
+		<tr>
+			<th scope="col">开始时间</th><th scope="col">结束时间</th><th scope="col">预约数</th>
+		</tr><tr>
+			<td style="width:120px;">2013-03-28 08:00</td><td style="width:120px;">2013-03-28 11:00</td><td align="center" style="width:60px;">1</td>
+		</tr>
+	</table>
+</div>
+       |5541|updatePanel|UPOrderRecord|
+            <div id="orderRecordPropertyDiv" style="display:block;height:auto;">
+                    <h4 class="title2"><label>预约单属性</label>&nbsp;&nbsp;&nbsp;&nbsp;<label style="font-size:12px; font-weight: normal;">请填写各项内容，*必填</label></h4>
+                    <div id="divOrderRecord" style="border:1px solid black;padding-left:10px;height:auto;">
+                        支&nbsp;&nbsp;付&nbsp;&nbsp;&nbsp;方&nbsp;&nbsp;式：<select name="drpOfferMethod" onchange="javascript:setTimeout(&#39;__doPostBack(\&#39;drpOfferMethod\&#39;,\&#39;\&#39;)&#39;, 0)" id="drpOfferMethod" class="SelectCss" style="width:140px;">
+	<option value="-1">&gt;&gt;请选择&lt;&lt;</option>
+	<option selected="selected" value="0">项目经费卡</option>
+
+</select><label style="color:Red">*</label>
+                        &nbsp;测&nbsp;&nbsp;试&nbsp;&nbsp;&nbsp;方&nbsp;&nbsp;式：<select name="drpOperateWay" id="drpOperateWay" disabled="disabled" class="aspNetDisabled SelectCss" style="width:140px;">
+	<option selected="selected" value="1">委托操作</option>
+	<option value="0">上机操作</option>
+
+</select><label style="color:Red">*</label>&nbsp;<span id="lblOperaterWayTips" style="color:Red;"></span><br />
+                        <div id="divFund" style=" display:none;">
+                          <div id="myfundcardDiv">
+                              <input id="rdbtnMyFundCard" type="radio" name="rdFundCard" value="rdbtnMyFundCard" onclick="javascript:setTimeout(&#39;__doPostBack(\&#39;rdbtnMyFundCard\&#39;,\&#39;\&#39;)&#39;, 0)" /><label for="rdbtnMyFundCard">我的项目经费卡：</label>
+                              <select name="drpMyFundCardList" onchange="javascript:setTimeout(&#39;__doPostBack(\&#39;drpMyFundCardList\&#39;,\&#39;\&#39;)&#39;, 0)" id="drpMyFundCardList" class="SelectCss">
+	<option selected="selected" value=">>请选择&lt;&lt;">&gt;&gt;请选择&lt;&lt;</option>
+
+</select>
+                              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                              负责人：<input name="txtMytFundCardPersonRsp" type="text" readonly="readonly" id="txtMytFundCardPersonRsp" style="background-color:LightGrey;width:60px;" />&nbsp;&nbsp;
+                              项目名称：<input name="txtMyfundCardPjtName" type="text" readonly="readonly" id="txtMyfundCardPjtName" style="background-color:LightGrey;width:180px;" /><br />
+                          </div>
+                          <div id="otherFundCardDiv">
+                          <input id="rdbtnOtherFundCard" type="radio" name="rdFundCard" value="rdbtnOtherFundCard" onclick="javascript:setTimeout(&#39;__doPostBack(\&#39;rdbtnOtherFundCard\&#39;,\&#39;\&#39;)&#39;, 0)" /><label for="rdbtnOtherFundCard">其他项目经费卡：</label>  
+                          <input name="txtFundCardNo" type="text" id="txtFundCardNo" style="width:100px;" />
+                          <input type="submit" name="btnCheckFundCard" value="校验" id="btnCheckFundCard" />&nbsp;
+                          负责人：<input name="txtFundCardPersonRsp" type="text" readonly="readonly" id="txtFundCardPersonRsp" style="background-color:LightGrey;width:60px;" />&nbsp;&nbsp;
+                          项目名称：<input name="txtFundCardPjtName" type="text" readonly="readonly" id="txtFundCardPjtName" style="background-color:LightGrey;width:180px;" /><br />
+                          </div>
+                            <span id="rstFundTips" style="color:Red;"></span>
+                        </div>
+
+                       课题项目名称：<input name="txtTestName" type="text" id="txtTestName" class="paramCss" style="width:140px;" /><label style="color:Red">* </label>
+                       课题项目代码：<input name="txtTestCode" type="text" id="txtTestCode" class="paramCss" style="width:140px;" /><label style="color:Red">* 备注：如果为空，请输入无</label><br />
+                        项&nbsp;&nbsp;目&nbsp;&nbsp;&nbsp;类&nbsp;&nbsp;型：<select name="drpProjectType" id="drpProjectType" class="SelectCss" style="width:140px;">
+	<option selected="selected" value="-1">&gt;&gt;请选择&lt;&lt;</option>
+	<option value="0">国家自然科学基金</option>
+	<option value="1">地方自然科学基金</option>
+	<option value="2">863、973计划项目</option>
+	<option value="3">其它科研项目</option>
+	<option value="4">国家科技攻关计划</option>
+	<option value="5">地方科技攻关计划</option>
+	<option value="6">开发、生产项目</option>
+
+</select><label style="color:Red">*</label>&nbsp;
+                       行&nbsp;&nbsp;业&nbsp;&nbsp;&nbsp;领&nbsp;&nbsp;&nbsp;域：<select name="drpIndustryField" id="drpIndustryField" class="SelectCss" style="width:140px;">
+	<option selected="selected" value="-1">&gt;&gt;请选择&lt;&lt;</option>
+	<option value="0">互联网电子商务</option>
+	<option value="1">农/林/牧/渔业</option>
+	<option value="2">医药/卫生</option>
+	<option value="3">矿业/冶金</option>
+	<option value="4">石油/能源/核技术</option>
+	<option value="5">化工/材料</option>
+	<option value="6">机械</option>
+	<option value="7">电气工程</option>
+	<option value="8">电子/信息技术</option>
+	<option value="9">通信/广播/邮政</option>
+	<option value="10">仪器/仪表</option>
+	<option value="11">建筑/建材</option>
+	<option value="12">交通/运输</option>
+	<option value="13">食品</option>
+	<option value="14">轻工/娱乐/体育</option>
+	<option value="15">环境保护</option>
+	<option value="16">其他</option>
+
+</select><label style="color:Red">*</label>
+                       <br />
+                       测&nbsp;&nbsp;试&nbsp;&nbsp;内&nbsp;容：
+                       <textarea name="txtTestContent" rows="2" cols="20" id="txtTestContent" class="paramCss" style="height:30px;width:600px;">
+</textarea><label style="color:Red">*</label><br />
+                    </div>
+            </div>
+        |711|updatePanel|uptips|
+               <div id="divLoad"></div>
+                <div id="divLoad02" >
+                    <span id="saveResultTips" style="color:Red;font-weight:bold;">课题内容不能为空！</span>
+                </div>
+                <table width="100%">
+                    <tr>
+                        <td align="left">                        
+                            <input type="submit" name="btnSave" value="提 交" onclick="return checkDigital();" id="btnSave" />
+                            <input type="submit" name="btnInputCloseWindows" value="关 闭" onclick="return CloseWindows();" id="btnInputCloseWindows" />
+                        </td>
+                    </tr>
+                </table>
+            |0|hiddenField|__EVENTTARGET||0|hiddenField|__EVENTARGUMENT||0|hiddenField|__LASTFOCUS||1372|hiddenField|__VIEWSTATE|/wEPDwUJNDcwMTExMTIxD2QWAgIDD2QWCgIDD2QWAmYPZBYWAgEPDxYCHgRUZXh0BQgxMTcyMjE1N2RkAgMPDxYCHwAFBueOi+WTjWRkAgUPDxYCHwAFCzE4ODE3Mzk0Nzk5ZGQCBw8PFgIfAAULMTg4MTczOTQ3OTlkZAIJDw8WAh8ABQnnoJTnqbbnlJ9kZAILDw8WAh8ABSHnurPnsbPnp5HlrabkuI7mioDmnK/noJTnqbbkuK3lv4NkZAINDw8WAh8ABTDlgoXph4zlj7bnuqLlpJblhYnosLHku6ogICAgICAgICAgICAgICAgICAgICAgICBkZAIPDw8WAh8ABR5BVkFUQVIzNzAgRlQtSVIgICAgICAgICAgICAgICBkZAIRDw8WAh8ABRjln7rnoYDljJblrablrp7pqozkuK3lv4NkZAITDw8WAh8ABQzljJblrabmpbwyMTNkZAIVDw8WAh8ABRPlvpDlvJXlqJ8oNjYxMzQ3MzApZGQCBQ9kFgJmD2QWAgIBDzwrABECAA8WBB4LXyFEYXRhQm91bmRnHgtfIUl0ZW1Db3VudAIBZAEQFgAWABYAFgJmD2QWBAIBD2QWBgIBDw8WAh8ABRAyMDEzLTAzLTI4IDA4OjAwZGQCAg8PFgIfAAUQMjAxMy0wMy0yOCAxMTowMGRkAgMPDxYCHwAFATFkZAICDw8WAh4HVmlzaWJsZWhkZAIHD2QWAgIBD2QWAmYPZBYCAgEPZBYIAgEPEGQPFgUCAQICAgMCBAIFFgUQZGRnEGRkaBBkZGgQZGRoEGRkaBYBAgFkAgMPEGRkFgFmZAIFDw8WAh8AZWRkAgcPZBYCAgEPZBYCAgMPEA8WBh4ORGF0YVZhbHVlRmllbGQFBkNhcmRJRB4NRGF0YVRleHRGaWVsZAUGQ2FyZElEHwFnZBAVAQ0+Puivt+mAieaLqTw8FQENPj7or7fpgInmi6k8PBQrAwFnFgFmZAIJDxYCHwNoFgICAQ9kFgJmD2QWBgIBDxBkZBYAZAIDDxBkZBYAZAIFDxBkZBYAZAILD2QWAmYPZBYCAgMPDxYCHwAFG+ivvumimOWGheWuueS4jeiDveS4uuepuu+8gWRkGAIFHl9fQ29udHJvbHNSZXF1aXJlUG9zdEJhY2tLZXlfXxYEBQ9yZGJ0bk15RnVuZENhcmQFD3JkYnRuTXlGdW5kQ2FyZAUScmRidG5PdGhlckZ1bmRDYXJkBRJyZGJ0bk90aGVyRnVuZENhcmQFCmd2U2VhdExpc3QPPCsADAMGFQEESUlJRAcUKwABFCsAAQL4hgMIAgFkD0JiFqqBF5ZwulNoRWS2NsnYr3YnJTRiQQnImZJmXj4=|424|hiddenField|__EVENTVALIDATION|/wEWLwKWnoXVBALoioWmBQLr5ePLCQL45a/ICQKA8c38DgKf8c38DgKpqtiZCwKkoYn3DALqh75xAr2G9EUCtdP9nAwC9JuywQMCyvqgswoCnq6M9QoCstTR+AwCxPm87AECoZal0AYCm5btkAQC4+mzuQgC8On/uggC7+n/uggC7un/uggC7en/uggC7On/uggC6+n/uggC6un/uggCmI724wQCi4664AQClI664AQClY664AQClo664AQCl4664AQCkI664AQCkY664AQCko664AQCg4664AQCjI664AQClI764wQClI724wQClI7y4wQClI7O4wQClI7K4wQClI7G4wQClI7C4wQCwoaTtgECnLe4kgwCkInJogLNjf4+AXk9/9Awg2wVtW/5kcmo0gvFiZjXg1Q2BuorAw==|15|asyncPostBackControlIDs||btnSave,btnSave|0|postBackControlIDs|||75|updatePanelIDs||tUP1,UP1,tupSeatList,upSeatList,tUPOrderRecord,UPOrderRecord,tuptips,uptips|0|childUpdatePanelIDs|||71|panelsToRefreshIDs||UP1,UP1,upSeatList,upSeatList,UPOrderRecord,UPOrderRecord,uptips,uptips|2|asyncPostBackTimeout||90|67|formAction||OrderByIntern.aspx?EquipID=282&IIIDDic=50040%3a1%7c&IsDelegate=True|5|pageTitle||预约单信息|

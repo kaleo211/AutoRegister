@@ -1,0 +1,333 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><title>
+	预约单信息
+</title><link href="../CSS/Bananer1.css" rel="stylesheet" type="text/css" />
+    <script src="../Common/Script/jquery-1.3.2.js" type="text/javascript"></script>
+    <script src="../Common/Script/jquery-1.4.1.min.js" type="text/javascript"></script>
+    <script src="../Common/Script/jquery-ui-1.7.3.custom.min.js" type="text/javascript"></script>
+    <script src="../Common/Script/DataPicker/WdatePicker.js" type="text/javascript"></script>
+    <script src="../Common/Script/Common.js" type="text/javascript"></script>
+    <script src="../Common/Script/jquery.validate.min.js" type="text/javascript" charset="iso-8859-1"></script>
+    <script type="text/javascript" src="../Common/Script/scrolltopcontrol.js"></script>
+    <script src="../Common/Script/jquery.bgiframe.js" type="text/javascript"></script>
+    <script src="../Common/Script/jquery.loadmask.js" type="text/javascript"></script>   
+    <script type="text/javascript">
+        $(function () {
+            $(".amountClass").live("blur", function () {
+                var amountID = $(this).attr("id");
+                var lblID = $(this).attr("id") + "lblTips";
+                var amount = $(this).val();
+                amount = $.trim(amount);
+                var digit = parseFloat(amount);
+                if (amount == '' || isNaN(amount) || isNaN(digit)) {
+                    var lblTip = "<label  class='error' id='" + lblID + "' style='color:Red'" + ">请输入数字</label>";
+                    $("#" + lblID).remove();
+                    $(lblTip).insertAfter(this);
+                }
+                else {
+                    $("#" + lblID).remove();
+                }
+            });
+
+            $(".amountClassEx").live("blur", function () {
+                var amountID = $(this).attr("id");
+                var lblID = $(this).attr("id") + "lblTips";
+                var amount = $(this).val();
+                amount = $.trim(amount);
+                var digit = parseFloat(amount);
+                if (amount != '' && (isNaN(amount) || isNaN(digit))) {
+                    var lblTip = "<label  class='error' id='" + lblID + "' style='color:Red'" + ">请输入数字</label>";
+                    $("#" + lblID).remove();
+                    $(lblTip).insertAfter(this);
+                }
+                else {
+                    $("#" + lblID).remove();
+                }
+            });
+
+            $(".paramCss").live("blur", function () {
+                var lblID = $(this).attr("id") + "lblTips";
+                var param = $(this).val();
+                param = $.trim(param);
+                if (param == '') {
+                    var lblTip = "<label id='" + lblID + "' style='color:Red'" + ">输入不合法</label>";
+                    $("#" + lblID).remove();
+                    $(lblTip).insertAfter(this);
+                }
+                else {
+                    $("#" + lblID).remove();
+                }
+            });
+
+            $(".SelectCss").live("click", function () {
+                var param = $(this).val();
+                var lblID = $(this).attr("id") + "lblTips";
+                if (param == '-1') {
+                    var lblTip = "<label id='" + lblID + "' style='color:Red'" + ">必选项</label>";
+                    $("#" + lblID).remove();
+                    $(lblTip).insertAfter(this);
+                    rst = false;
+                }
+                else {
+                    $("#" + lblID).remove();
+                }
+            });
+        });
+
+        function checkDigital() {
+            var rst = true;
+            $(".error").remove();
+            $(".amountClass").each(function (index, txtEle) {
+                var lblID = $(this).attr("id") + "lblTips";
+                var param = $(txtEle).val();
+                param = $.trim(param);
+                var digit = parseFloat(param);
+                if (param == '' || isNaN(param || isNaN(digit))) {
+                    var lblTip = "<label class='error' id='" + lblID + "' style='color:Red'" + ">请输入数字</label>";
+                    $("#" + lblID).remove();
+                    $(lblTip).insertAfter(this);
+                    rst = false;
+                }
+                else {
+                    $("#" + lblID).remove();
+                }
+            });
+
+            $(".amountClassEx").each(function (index, txtEle) {
+                var lblID = $(this).attr("id") + "lblTips";
+                var param = $(txtEle).val();
+                var amount = $.trim(param);
+                var digit = parseFloat(param);
+                if (amount != '' && (isNaN(amount) || isNaN(digit))) {
+                    var lblTip = "<label class='error' id='" + lblID + "' style='color:Red'" + ">请输入数字</label>";
+                    $("#" + lblID).remove();
+                    $(lblTip).insertAfter(this);
+                    rst = false;
+                }
+                else {
+                    $("#" + lblID).remove();
+                }
+            });
+
+            $(".paramCss").each(function (index, txtEle) {
+                var param = $(txtEle).val();
+                var lblID = $(txtEle).attr("id") + "lblTips";
+                param = $.trim(param);
+                if (param == '') {
+                    var lblTip = "<label class='error' id='" + lblID + "' style='color:Red'" + ">不能为空</label>";
+                    $("#" + lblID).remove();
+                    $(lblTip).insertAfter(this);
+                    rst = false;
+                }
+                else {
+                    $("#" + lblID).remove();
+                }
+            });
+
+            $(".SelectCss").each(function (index, txtEle) {
+                var param = $(txtEle).val();
+                var lblID = $(txtEle).attr("id") + "lblTips";
+                if (param == '-1') {
+                    var lblTip = "<label id='" + lblID + "' style='color:Red'" + ">必选项</label>";
+                    $("#" + lblID).remove();
+                    $(lblTip).insertAfter(this);
+                    rst = false;
+                }
+                else {
+                    $("#" + lblID).remove();
+                }
+            });
+            
+
+            if (rst) {
+                rst = confirm("确定要生成预约单吗？");
+                $("#divLoad").html("<div style=\"text-align:center; margin-top:10px;\"><label style=\"color: #0000FF;font-weight: bolder\" >请稍等，提交中</label>&nbsp;&nbsp;<img src='../CSS/images/mbaLoading.gif' alt=''/></div>");
+                $("#divLoad02").html("");
+
+                return rst;
+            }
+            else {
+                alert("相关信息填写不完整或不合法，请检查！");
+                return rst;
+            }
+        };
+        //关闭web窗口
+        function CloseWindows() {
+            window.close();
+        }
+</script>
+</head>
+<body > 
+    <form method="post" action="OrderByIntern.aspx?EquipID=282&amp;IIIDDic=50040%3a1%7c&amp;IsDelegate=True" id="form1">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUJNDcwMTExMTIxD2QWAgIDD2QWCAIDD2QWAmYPZBYWAgEPDxYCHgRUZXh0BQgxMTcyMjE1N2RkAgMPDxYCHwAFBueOi+WTjWRkAgUPDxYCHwAFCzE4ODE3Mzk0Nzk5ZGQCBw8PFgIfAAULMTg4MTczOTQ3OTlkZAIJDw8WAh8ABQnnoJTnqbbnlJ9kZAILDw8WAh8ABSHnurPnsbPnp5HlrabkuI7mioDmnK/noJTnqbbkuK3lv4NkZAINDw8WAh8ABTDlgoXph4zlj7bnuqLlpJblhYnosLHku6ogICAgICAgICAgICAgICAgICAgICAgICBkZAIPDw8WAh8ABR5BVkFUQVIzNzAgRlQtSVIgICAgICAgICAgICAgICBkZAIRDw8WAh8ABRjln7rnoYDljJblrablrp7pqozkuK3lv4NkZAITDw8WAh8ABQzljJblrabmpbwyMTNkZAIVDw8WAh8ABRPlvpDlvJXlqJ8oNjYxMzQ3MzApZGQCBQ9kFgJmD2QWAgIBDzwrABECAA8WBB4LXyFEYXRhQm91bmRnHgtfIUl0ZW1Db3VudAIBZAEQFgAWABYAFgJmD2QWBAIBD2QWBgIBDw8WAh8ABRAyMDEzLTAzLTI4IDA4OjAwZGQCAg8PFgIfAAUQMjAxMy0wMy0yOCAxMTowMGRkAgMPDxYCHwAFATFkZAICDw8WAh4HVmlzaWJsZWhkZAIHD2QWAgIBD2QWAmYPZBYCAgEPZBYGAgEPEGQPFgUCAQICAgMCBAIFFgUQZGRnEGRkaBBkZGgQZGRoEGRkaBYBZmQCAw8QZGQWAWZkAgcPZBYCAgEPZBYCAgMPEA8WBh4ORGF0YVZhbHVlRmllbGQFBkNhcmRJRB4NRGF0YVRleHRGaWVsZAUGQ2FyZElEHwFnZBAVAQ0+Puivt+mAieaLqTw8FQENPj7or7fpgInmi6k8PBQrAwFnFgFmZAIJDxYCHwNoFgICAQ9kFgJmD2QWBgIBDxBkZBYAZAIDDxBkZBYAZAIFDxBkZBYAZBgCBR5fX0NvbnRyb2xzUmVxdWlyZVBvc3RCYWNrS2V5X18WBAUPcmRidG5NeUZ1bmRDYXJkBQ9yZGJ0bk15RnVuZENhcmQFEnJkYnRuT3RoZXJGdW5kQ2FyZAUScmRidG5PdGhlckZ1bmRDYXJkBQpndlNlYXRMaXN0DzwrAAwDBhUBBElJSUQHFCsAARQrAAEC+IYDCAIBZCccZoNf70vJIXkJ64fjvlp2NliuwxKp6m+v98b5O61O" />
+
+
+<script src="/ScriptResource.axd?d=-HI83aK6FWNM0FQ5pWTrRWH0K44CsKGUW8oor5dAISkjntpBdp75hIROqP7fZhMoefiMsMIyGq2gmZP8DLZ0ByiNzBl3VqMnqnpiPtuJmKjpUm1beUyUObNo9RZst--6b5Kgwaj-tSzfIbrQtkr3MPCD8Ao12p5uvJJCgRLwuWKvVGURCT3OZCBg8V8nYzvV0&amp;t=ffffffff940d030f" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+if (typeof(Sys) === 'undefined') throw new Error('ASP.NET Ajax 客户端框架未能加载。');
+//]]>
+</script>
+
+<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEWMgLv96LNBALr5ePLCQL45a/ICQKA8c38DgKf8c38DgKpqtiZCwLqh75xAr2G9EUCtdP9nAwC9JuywQMCyvqgswoCnq6M9QoCstTR+AwCxPm87AECoZal0AYCm5btkAQC4+mzuQgC8On/uggC7+n/uggC7un/uggC7en/uggC7On/uggC6+n/uggC6un/uggCmI724wQCi4664AQClI664AQClY664AQClo664AQCl4664AQCkI664AQCkY664AQCko664AQCg4664AQCjI664AQClI764wQClI724wQClI7y4wQClI7O4wQClI7K4wQClI7G4wQClI7C4wQCwoaTtgECxJanWgKf17WsAwKbgoAIAofas78KAoe8wsALApy3uJIMApCJyaICWF65YAKTLoZ952IJwJ0nc5+Xke/zVXXvaHIxl6ZyXUA=" />
+     
+     <div style="overflow:auto; height:600px; ">
+        <div id="UP1">
+	
+          <h4 class="title2">用户信息</h4>
+           <fieldset style="border:1px solid black; padding-left:10px;">
+           <label for="txtUserName" >预约人帐号：</label><span id="txtUserCode">11722157</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           <label for="txtName" >预约人姓名：</label><span id="txtName">王响</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           联系电话：<span id="txtPhoneNo">18817394799</span><br /><hr />
+           手机号码：<span id="txtMobileNo">18817394799</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           用户类型：<span id="txtPers_Type">研究生</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           所属部门：<span id="txtDeptName">纳米科学与技术研究中心</span>
+        </fieldset>
+            <h4 class="title2">仪器信息</h4>
+            <div style="border:1px solid black;">
+            <table class="tableclass4">
+                <tr>
+                    <td>仪器名称：<span id="txtEquipName">傅里叶红外光谱仪                        </span></td>
+                    <td>仪器型号：<span id="txtEquipModel">AVATAR370 FT-IR               </span></td>
+                </tr>
+                 <tr>
+                    <td>实&nbsp;验&nbsp;室：<span id="txtOID">基础化学实验中心</span></td>
+                    <td>所在位置：<span id="txtEquipAddress">化学楼213</span></td>
+                </tr>
+                 <tr>
+                    <td colspan="2">联&nbsp;系&nbsp;人：<span id="txtChargePerson">徐引娟(66134730)</span></td>
+                </tr>
+            </table>
+            </div>
+        
+          
+</div>
+        <div id="upSeatList">
+	
+                <h4 class="title2">预约时间段</h4>
+                <div>
+		<table class="GridSelf" cellspacing="0" rules="all" border="1" id="gvSeatList" width="60%">
+			<tr>
+				<th scope="col">开始时间</th><th scope="col">结束时间</th><th scope="col">预约数</th>
+			</tr><tr>
+				<td width="120">2013-03-28 08:00</td><td width="120">2013-03-28 11:00</td><td align="center" width="60">1</td>
+			</tr>
+		</table>
+	</div>
+       
+</div>
+        <div id="dvView01">
+        <div id="UPOrderRecord">
+	
+            <div id="orderRecordPropertyDiv" style="display:block;height:auto;">
+                    <h4 class="title2"><label>预约单属性</label>&nbsp;&nbsp;&nbsp;&nbsp;<label style="font-size:12px; font-weight: normal;">请填写各项内容，*必填</label></h4>
+                    <div id="divOrderRecord" style="border:1px solid black;padding-left:10px;height:auto;">
+                        支&nbsp;&nbsp;付&nbsp;&nbsp;&nbsp;方&nbsp;&nbsp;式：<select name="drpOfferMethod" id="drpOfferMethod" class="SelectCss">
+		<option selected="selected" value="-1">&gt;&gt;请选择&lt;&lt;</option>
+		<option value="0">项目经费卡</option>
+
+	</select><label style="color:Red">*</label>
+                        &nbsp;测&nbsp;&nbsp;试&nbsp;&nbsp;&nbsp;方&nbsp;&nbsp;式：<select name="drpOperateWay" id="drpOperateWay" disabled="disabled" class="aspNetDisabled SelectCss">
+		<option selected="selected" value="1">委托操作</option>
+		<option value="0">上机操作</option>
+
+	</select><label style="color:Red">*</label>&nbsp;<span id="lblOperaterWayTips"><font color="Red"></font></span><br />
+                        <div id="divFund" style=" display:none;">
+                          <div id="myfundcardDiv">
+                              <input id="rdbtnMyFundCard" type="radio" name="rdFundCard" value="rdbtnMyFundCard" onclick="javascript:setTimeout(&#39;__doPostBack(\&#39;rdbtnMyFundCard\&#39;,\&#39;\&#39;)&#39;, 0)" /><label for="rdbtnMyFundCard">我的项目经费卡：</label>
+                              <select name="drpMyFundCardList" id="drpMyFundCardList" class="SelectCss">
+		<option selected="selected" value=">>请选择&lt;&lt;">&gt;&gt;请选择&lt;&lt;</option>
+
+	</select>
+                              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                              负责人：<input name="txtMytFundCardPersonRsp" type="text" readonly="readonly" id="txtMytFundCardPersonRsp" />&nbsp;&nbsp;
+                              项目名称：<input name="txtMyfundCardPjtName" type="text" readonly="readonly" id="txtMyfundCardPjtName" /><br />
+                          </div>
+                          <div id="otherFundCardDiv">
+                          <input id="rdbtnOtherFundCard" type="radio" name="rdFundCard" value="rdbtnOtherFundCard" onclick="javascript:setTimeout(&#39;__doPostBack(\&#39;rdbtnOtherFundCard\&#39;,\&#39;\&#39;)&#39;, 0)" /><label for="rdbtnOtherFundCard">其他项目经费卡：</label>  
+                          <input name="txtFundCardNo" type="text" id="txtFundCardNo" />
+                          <input type="submit" name="btnCheckFundCard" value="校验" id="btnCheckFundCard" />&nbsp;
+                          负责人：<input name="txtFundCardPersonRsp" type="text" readonly="readonly" id="txtFundCardPersonRsp" />&nbsp;&nbsp;
+                          项目名称：<input name="txtFundCardPjtName" type="text" readonly="readonly" id="txtFundCardPjtName" /><br />
+                          </div>
+                            <span id="rstFundTips"><font color="Red"></font></span>
+                        </div>
+
+                       课题项目名称：<input name="txtTestName" type="text" id="txtTestName" class="paramCss" /><label style="color:Red">* </label>
+                       课题项目代码：<input name="txtTestCode" type="text" id="txtTestCode" class="paramCss" /><label style="color:Red">* 备注：如果为空，请输入无</label><br />
+                        项&nbsp;&nbsp;目&nbsp;&nbsp;&nbsp;类&nbsp;&nbsp;型：<select name="drpProjectType" id="drpProjectType" class="SelectCss">
+		<option selected="selected" value="-1">&gt;&gt;请选择&lt;&lt;</option>
+		<option value="0">国家自然科学基金</option>
+		<option value="1">地方自然科学基金</option>
+		<option value="2">863、973计划项目</option>
+		<option value="3">其它科研项目</option>
+		<option value="4">国家科技攻关计划</option>
+		<option value="5">地方科技攻关计划</option>
+		<option value="6">开发、生产项目</option>
+
+	</select><label style="color:Red">*</label>&nbsp;
+                       行&nbsp;&nbsp;业&nbsp;&nbsp;&nbsp;领&nbsp;&nbsp;&nbsp;域：<select name="drpIndustryField" id="drpIndustryField" class="SelectCss">
+		<option selected="selected" value="-1">&gt;&gt;请选择&lt;&lt;</option>
+		<option value="0">互联网电子商务</option>
+		<option value="1">农/林/牧/渔业</option>
+		<option value="2">医药/卫生</option>
+		<option value="3">矿业/冶金</option>
+		<option value="4">石油/能源/核技术</option>
+		<option value="5">化工/材料</option>
+		<option value="6">机械</option>
+		<option value="7">电气工程</option>
+		<option value="8">电子/信息技术</option>
+		<option value="9">通信/广播/邮政</option>
+		<option value="10">仪器/仪表</option>
+		<option value="11">建筑/建材</option>
+		<option value="12">交通/运输</option>
+		<option value="13">食品</option>
+		<option value="14">轻工/娱乐/体育</option>
+		<option value="15">环境保护</option>
+		<option value="16">其他</option>
+
+	</select><label style="color:Red">*</label>
+                       <br />
+                       测&nbsp;&nbsp;试&nbsp;&nbsp;内&nbsp;容：
+                       <textarea name="txtTestContent" rows="2" cols="20" id="txtTestContent" class="paramCss">
+</textarea><label style="color:Red">*</label><br />
+                    </div>
+            </div>
+        
+</div> 
+      
+      <h4 class="title2"><label>收费项目列表</label>&nbsp;&nbsp;&nbsp;&nbsp;<label style="font-size:12px; font-weight: normal;">请填写实验各项目预估使用数量，*必填</label></h4>
+            <div id="TestExampleDiv" style="border:1px solid black;padding-left:10px;height:auto;">
+            <span id="txt551Name" style="display:inline-block;">红外:</span><input type="hidden" name="hid551Price" id="hid551Price" value="10.00" /><input type="hidden" name="hid551Desc" id="hid551Desc" /><input type="hidden" name="hid551UnitName" id="hid551UnitName" value="个" /><input name="txt551Amount" type="text" value="0" id="txt551Amount" class="amountClass" /><span><font color="Red">*</font></span><span style="display:inline-block;">   个</span><span style="display:inline-block;"></span><input type="hidden" name="txt551PriceType" id="txt551PriceType" value="0" /><span><br /><hr /></span></div>
+      
+      
+            <h4 class="title2"><label>附加信息</label>&nbsp;&nbsp;&nbsp;&nbsp;<label style="font-size:12px; font-weight: normal;">请填写各项内容，*必填</label></h4>
+            <div id="TechParamDiv" style="border:1px solid black; padding-left:10px; height:auto;">
+            </div>
+
+      </div>
+        
+        <div id="uptips">
+	
+               <div id="divLoad"></div>
+                <div id="divLoad02" >
+                    <span id="saveResultTips"><b><font color="Red"></font></b></span>
+                </div>
+                <table width="100%">
+                    <tr>
+                        <td align="left">                        
+                            <input type="submit" name="btnSave" value="提 交" onclick="return checkDigital();" id="btnSave" />
+                            <input type="submit" name="btnInputCloseWindows" value="关 闭" onclick="return CloseWindows();" id="btnInputCloseWindows" />
+                        </td>
+                    </tr>
+                </table>
+            
+</div>
+    </div>
+    </form>
+</body>
+</html>

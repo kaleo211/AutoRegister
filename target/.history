@@ -1,0 +1,77 @@
+git status
+compile
+exit
+run
+compile
+run
+exit
+compile
+run
+compile
+run
+compile
+run
+compile
+run
+exit
+compile
+run
+compile
+run
+exit
+compile
+run
+compile
+run
+run -deprecation
+compile
+run
+compile
+run
+compile
+run
+compile
+run
+java.lang.reflect.Method.invoke
+run
+\
+run
+exit
+run
+compile
+run
+scala.MatchError:scala.MatchError:
+last compile:run
+run
+last compile:run
+compile
+run
+compile
+run
+last compile:run
+run
+last compile:run
+compile
+run
+exit
+run
+compile
+run
+a
+exit
+assembly
+exit
+assembly
+run
+sbt
+run
+assembly
+run
+ew
+exit
+run
+exit
+run
+exit
+compile
+run
